@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Infográfico: Plano de Investimento Moderado</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+body { font-family: 'Roboto', sans-serif; background-color: #f8fafc; color: #1e293b; }
+.chart-container { position: relative; width: 100%; max-width: 900px; margin-left: auto; margin-right: auto; height: 50vh; min-height: 350px; max-height: 500px; }
+.donut-container { position: relative; width: 100%; max-width: 400px; margin-left: auto; margin-right: auto; height: 40vh; min-height: 300px; max-height: 400px; }
+.timeline-dot { width: 16px; height: 16px; border-radius: 50%; background-color: #ea580c; border: 3px solid #fff; box-shadow: 0 0 0 2px #ea580c; }
+.glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(10px); border: 1px solid rgba(226, 232, 240, 0.8); }
+</style>
+</head>
+<body class="antialiased pb-20">
+
+<!-- Chosen Palette: Vibrant Professional (Deep Blue #1e3a8a, Vibrant Orange #ea580c, Teal #0d9488, Emerald #059669, Light Slate #f8fafc) -->
+<!-- Application Structure Plan: Linear scrolling narrative structure to guide the user through the 'Glide Path' concept chronologically and conceptually. It starts with a high-level overview (the evolving area chart), breaks down the composition at the extremes (youth vs retirement donuts), details the specific asset classes using grid cards, and concludes with key takeaways and timelines. This structure ensures users understand the 'what' and 'why' before getting into the granular details. -->
+<!-- Visualization & Content Choices: 1. Evolution (Goal: Change) -> Stacked Area Chart. Justification: Perfectly illustrates how the composition of a 100% portfolio shifts over time. Chart.js Canvas. NO SVG. 2. Portfolio Extremes (Goal: Compare) -> Donut Charts. Justification: Shows the stark contrast in risk allocation between age 20 and 60. Chart.js Canvas. NO SVG. 3. Asset Classes (Goal: Organize) -> HTML/CSS Grid with Unicode. Justification: Cleanly structures qualitative data. NO SVG. 4. Timeline (Goal: Organize) -> HTML/CSS timeline. Justification: Highlights key narrative milestones visually without complex libraries. NO SVG. -->
+<!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+<header class="bg-[#1e3a8a] text-white py-16 px-6 shadow-xl relative overflow-hidden">
+<div class="absolute top-0 right-0 opacity-10 text-[200px] leading-none transform translate-x-1/4 -translate-y-1/4">&#128200;</div>
+<div class="max-w-6xl mx-auto relative z-10">
+<span class="bg-[#ea580c] text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4 inline-block">Estratégia Executiva</span>
+<h1 class="text-4xl md:text-6xl font-black mb-6 leading-tight">Plano de Alocação de Ativos:<br><span class="text-[#38bdf8]">Perfil Moderado</span></h1>
+<p class="text-lg md:text-2xl text-blue-100 max-w-3xl leading-relaxed font-light">
+Uma jornada visual pela estratégia <strong>Glide Path</strong> (20 aos 60 Anos). Descubra como ajustar dinamicamente a sua exposição ao risco para garantir crescimento sustentável na juventude e preservação de capital na reforma.
+</p>
+</div>
+</header>
+
+<main class="max-w-6xl mx-auto px-6 mt-12 space-y-24">
+
+<section>
+<div class="mb-8 max-w-3xl">
+<h2 class="text-3xl font-bold text-slate-800 mb-4 flex items-center gap-3">
+<span class="text-[#ea580c]">&#128200;</span> A Evolução da Estratégia ao Longo do Tempo
+</h2>
+<p class="text-lg text-slate-600 leading-relaxed">
+A essência do <em>Glide Path</em> é a redução gradual do risco. O gráfico abaixo ilustra a transformação do seu portefólio ao longo de 40 anos. Observe como as áreas de risco (Laranja e Azul Claro) encolhem gradualmente para dar lugar à fundação segura do Rendimento Fixo (Azul Escuro), enquanto o Imobiliário atua como um pilar de estabilidade constante.
+</p>
+</div>
+<div class="glass-card rounded-2xl shadow-xl p-6 md:p-8">
+<div class="chart-container">
+<canvas id="glidePathChart"></canvas>
+</div>
+<div class="mt-6 text-center text-sm text-slate-500 font-medium bg-slate-50 p-4 rounded-lg border border-slate-100">
+<strong>Conclusão Chave:</strong> Aos 20 anos, 50% do capital está exposto a ações. Aos 60 anos, 75% do capital está protegido em investimentos de baixo risco.
+</div>
+</div>
+</section>
+
+<section>
+<div class="mb-8 max-w-3xl">
+<h2 class="text-3xl font-bold text-slate-800 mb-4 flex items-center gap-3">
+<span class="text-[#0d9488]">&#9878;</span> Contrastes: Acumulação vs. Preservação
+</h2>
+<p class="text-lg text-slate-600 leading-relaxed">
+Para compreender o impacto desta estratégia, compare a alocação de ativos nos dois extremos da sua carreira profissional. Aos 20 anos, o foco é o <strong>crescimento agressivo e o juro composto</strong>. Aos 60 anos, o objetivo principal muda radicalmente para a <strong>geração de rendimento passivo e preservação</strong> do património acumulado.
+</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-10">
+<div class="glass-card rounded-2xl shadow-lg p-8 border-t-8 border-[#ea580c] flex flex-col items-center">
+<h3 class="text-2xl font-black text-slate-800 mb-2">Aos 20 Anos</h3>
+<p class="text-slate-500 font-medium mb-6 uppercase tracking-wider text-sm">Fase de Acumulação Inicial</p>
+<div class="donut-container w-full">
+<canvas id="donut20Chart"></canvas>
+</div>
+<p class="mt-6 text-center text-slate-600">Maior tolerância ao risco para alavancar a rentabilidade a longo prazo.</p>
+</div>
+<div class="glass-card rounded-2xl shadow-lg p-8 border-t-8 border-[#1e3a8a] flex flex-col items-center">
+<h3 class="text-2xl font-black text-slate-800 mb-2">Aos 60 Anos</h3>
+<p class="text-slate-500 font-medium mb-6 uppercase tracking-wider text-sm">Fase de Preservação</p>
+<div class="donut-container w-full">
+<canvas id="donut60Chart"></canvas>
+</div>
+<p class="mt-6 text-center text-slate-600">Forte blindagem do capital para garantir uma reforma tranquila e previsível.</p>
+</div>
+</div>
+</section>
+
+<section class="bg-slate-100 py-16 px-6 -mx-6 rounded-3xl mt-24 border-y border-slate-200 shadow-inner">
+<div class="max-w-6xl mx-auto">
+<div class="mb-12 max-w-3xl">
+<h2 class="text-3xl font-bold text-slate-800 mb-4 flex items-center gap-3">
+<span class="text-[#059669]">&#128188;</span> Anatomia das Classes de Ativos
+</h2>
+<p class="text-lg text-slate-600 leading-relaxed">
+Uma execução bem-sucedida requer o entendimento do papel de cada motor do seu portefólio. Cada classe de ativos tem um objetivo específico e um comportamento dinâmico que se altera conforme as necessidades financeiras evoluem.
+</p>
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+
+<div class="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:-translate-y-1 transition-transform duration-300">
+<div class="text-5xl mb-4 text-[#1e3a8a]">&#127974;</div>
+<h3 class="text-xl font-bold text-slate-800 mb-2">Rendimento Fixo & Liquidez</h3>
+<p class="text-sm text-[#1e3a8a] font-bold mb-4 uppercase">Risco Baixo</p>
+<p class="text-slate-600 text-sm mb-4"><strong>Objetivo:</strong> Segurança, reserva de emergência e preservação do poder de compra contra a inflação. (Obrigações, Depósitos)</p>
+<div class="mt-auto bg-blue-50 p-3 rounded text-sm text-blue-900 border border-blue-100">
+<strong>Dinâmica:</strong> Cresce de 35% para 75%. É a espinha dorsal da segurança.
+</div>
+</div>
+
+<div class="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:-translate-y-1 transition-transform duration-300">
+<div class="text-5xl mb-4 text-[#ea580c]">&#128200;</div>
+<h3 class="text-xl font-bold text-slate-800 mb-2">Ações Nacionais / Regionais</h3>
+<p class="text-sm text-[#ea580c] font-bold mb-4 uppercase">Risco Médio/Alto</p>
+<p class="text-slate-600 text-sm mb-4"><strong>Objetivo:</strong> Crescimento de capital e recebimento de dividendos com exposição à economia local, sem risco cambial.</p>
+<div class="mt-auto bg-orange-50 p-3 rounded text-sm text-orange-900 border border-orange-100">
+<strong>Dinâmica:</strong> Reduz de 30% para 5% com a quebra na tolerância à volatilidade.
+</div>
+</div>
+
+<div class="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:-translate-y-1 transition-transform duration-300">
+<div class="text-5xl mb-4 text-[#0d9488]">&#127758;</div>
+<h3 class="text-xl font-bold text-slate-800 mb-2">Ações Globais</h3>
+<p class="text-sm text-[#0d9488] font-bold mb-4 uppercase">Risco Médio/Alto</p>
+<p class="text-slate-600 text-sm mb-4"><strong>Objetivo:</strong> Forte motor de crescimento e diversificação global. Protege contra crises no mercado local (hedge).</p>
+<div class="mt-auto bg-teal-50 p-3 rounded text-sm text-teal-900 border border-teal-100">
+<strong>Dinâmica:</strong> Cai de 20% para 5%. Investimento primário através de ETFs globais.
+</div>
+</div>
+
+<div class="bg-white rounded-xl shadow-md p-6 border border-slate-200 hover:-translate-y-1 transition-transform duration-300">
+<div class="text-5xl mb-4 text-[#059669]">&#127960;</div>
+<h3 class="text-xl font-bold text-slate-800 mb-2">Imobiliário / REITs</h3>
+<p class="text-sm text-[#059669] font-bold mb-4 uppercase">Rendimento Passivo</p>
+<p class="text-slate-600 text-sm mb-4"><strong>Objetivo:</strong> Geração regular de rendas e proteção contra inflação via valorização dos ativos imobiliários.</p>
+<div class="mt-auto bg-emerald-50 p-3 rounded text-sm text-emerald-900 border border-emerald-100">
+<strong>Dinâmica:</strong> Constante nos 15%. Ajuda no juro composto e serve de pensão extra.
+</div>
+</div>
+
+</div>
+</div>
+</section>
+
+<section>
+<div class="mb-10 max-w-3xl">
+<h2 class="text-3xl font-bold text-slate-800 mb-4 flex items-center gap-3">
+<span class="text-slate-700">&#128336;</span> Fases Críticas e Recomendações
+</h2>
+<p class="text-lg text-slate-600 leading-relaxed">
+A disciplina é a chave deste plano. Conheça as fases mais determinantes do processo e os requisitos cruciais de manutenção da carteira para garantir o sucesso da estratégia.
+</p>
+</div>
+
+<div class="flex flex-col md:flex-row gap-12">
+<div class="w-full md:w-2/3">
+<div class="relative pl-8 border-l-4 border-slate-200 space-y-10">
+<div class="relative">
+<div class="timeline-dot absolute -left-[26px] top-1"></div>
+<h4 class="text-2xl font-bold text-slate-800">Pico de Acumulação <span class="text-[#ea580c] ml-2 font-black">40 Anos</span></h4>
+<p class="text-slate-600 mt-2 text-lg">O ponto de equilíbrio perfeito (50% Rendimento Fixo / 50% Ativos de Risco e Imobiliário). Fase de maturação máxima da carreira profissional, ideal para alavancar aportes.</p>
+</div>
+<div class="relative">
+<div class="timeline-dot absolute -left-[26px] top-1"></div>
+<h4 class="text-2xl font-bold text-slate-800">Transição Crítica <span class="text-[#ea580c] ml-2 font-black">44 a 52 Anos</span></h4>
+<p class="text-slate-600 mt-2 text-lg">Período vital onde a estratégia muda de crescimento para preservação. A redução da volatilidade torna-se a prioridade técnica do portefólio.</p>
+</div>
+<div class="relative">
+<div class="timeline-dot absolute -left-[26px] top-1"></div>
+<h4 class="text-2xl font-bold text-slate-800">Preparação Final <span class="text-[#ea580c] ml-2 font-black">56 Anos</span></h4>
+<p class="text-slate-600 mt-2 text-lg">Consolidação de 70% em baixo risco, preparando a infraestrutura para a geração de rendimentos passivos durante a reforma eminente.</p>
+</div>
+</div>
+</div>
+
+<div class="w-full md:w-1/3">
+<div class="bg-amber-50 rounded-2xl p-6 border border-amber-200 shadow-sm h-full">
+<h4 class="text-xl font-bold text-amber-900 mb-4 flex items-center gap-2">&#9888; Notas do Especialista</h4>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="text-amber-500 mt-1">&#10148;</span>
+<div>
+<strong class="text-amber-900 block">Rebalanceamento Anual</strong>
+<span class="text-amber-800 text-sm">Direcione novos investimentos para ativos que ficaram abaixo da percentagem alvo para manter a estrutura do Glide Path.</span>
+</div>
+</li>
+<li class="flex items-start gap-3">
+<span class="text-amber-500 mt-1">&#10148;</span>
+<div>
+<strong class="text-amber-900 block">Otimização Fiscal</strong>
+<span class="text-amber-800 text-sm">Avalie rigorosamente o impacto fiscal (tributação) ao realizar vendas necessárias para rebalancear a carteira.</span>
+</div>
+</li>
+</ul>
+<div class="mt-6 text-xs text-amber-700/70 italic border-t border-amber-200/50 pt-4">
+Aviso: Tabela ilustrativa e educativa. Decisões requerem aconselhamento certificado.
+</div>
+</div>
+</div>
+</div>
+</section>
+
+</main>
+
+<footer class="bg-slate-900 text-slate-400 py-8 text-center mt-20 border-t border-slate-800">
+<p class="text-sm">Desenvolvido com base no Relatório de Alocação de Ativos: Perfil Moderado</p>
+</footer>
+
+<script>
+function wrapLabel(labelString) {
+    if (labelString.length <= 16) return labelString;
+    const words = labelString.split(' ');
+    const lines = [];
+    let currentLine = '';
+    words.forEach(word => {
+        if ((currentLine + word).length > 16 && currentLine.length > 0) {
+            lines.push(currentLine.trim());
+            currentLine = word + ' ';
+        } else {
+            currentLine += word + ' ';
+        }
+    });
+    if (currentLine.trim().length > 0) {
+        lines.push(currentLine.trim());
+    }
+    return lines;
+}
+
+const customTooltipConfig = {
+    callbacks: {
+        title: function(tooltipItems) {
+            const item = tooltipItems[0];
+            let label = item.chart.data.labels[item.dataIndex];
+            if (Array.isArray(label)) {
+                return label.join(' ');
+            } else {
+                return label;
+            }
+        }
+    }
+};
+
+const labelsRaw = ['Rendimento Fixo & Liquidez', 'Ações Nacionais / Regionais', 'Ações Globais / Internacionais', 'Imobiliário / REITs'];
+const processedLabels = labelsRaw.map(wrapLabel);
+
+const palette = {
+    fixed: '#1e3a8a',
+    national: '#ea580c',
+    global: '#0d9488',
+    realEstate: '#059669'
+};
+
+Chart.defaults.font.family = "'Roboto', sans-serif";
+Chart.defaults.color = '#64748b';
+Chart.defaults.font.size = 13;
+
+const areaCtx = document.getElementById('glidePathChart').getContext('2d');
+new Chart(areaCtx, {
+    type: 'line',
+    data: {
+        labels: ['20 anos', '24 anos', '28 anos', '32 anos', '36 anos', '40 anos', '44 anos', '48 anos', '52 anos', '56 anos', '60 anos'],
+        datasets: [
+            {
+                label: labelsRaw[0],
+                data: [35, 38, 41, 44, 47, 50, 55, 60, 65, 70, 75],
+                borderColor: palette.fixed,
+                backgroundColor: 'rgba(30, 58, 138, 0.8)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 2
+            },
+            {
+                label: labelsRaw[1],
+                data: [30, 28, 26, 24, 22, 20, 17, 14, 11, 8, 5],
+                borderColor: palette.national,
+                backgroundColor: 'rgba(234, 88, 12, 0.8)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 2
+            },
+            {
+                label: labelsRaw[2],
+                data: [20, 19, 18, 17, 16, 15, 13, 11, 9, 7, 5],
+                borderColor: palette.global,
+                backgroundColor: 'rgba(13, 148, 136, 0.8)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 2
+            },
+            {
+                label: labelsRaw[3],
+                data: [15, 15, 15, 15, 15, 15, 15, 15, 15, 15, 15],
+                borderColor: palette.realEstate,
+                backgroundColor: 'rgba(5, 150, 105, 0.8)',
+                fill: true,
+                tension: 0.4,
+                pointRadius: 4,
+                pointBackgroundColor: '#fff',
+                pointBorderWidth: 2
+            }
+        ]
+    },
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        interaction: { mode: 'index', intersect: false },
+        scales: {
+            x: { grid: { display: false } },
+            y: {
+                stacked: true,
+                min: 0,
+                max: 100,
+                ticks: { callback: function(value) { return value + '%'; }, font: { weight: 'bold' } },
+                grid: { color: 'rgba(226, 232, 240, 0.6)' }
+            }
+        },
+        plugins: {
+            legend: { position: 'top', labels: { usePointStyle: true, padding: 20, font: { weight: '500' } } },
+            tooltip: {
+                backgroundColor: 'rgba(15, 23, 42, 0.95)',
+                titleFont: { size: 14 },
+                bodyFont: { size: 14 },
+                padding: 14,
+                itemSort: function(a, b) { return b.datasetIndex - a.datasetIndex; },
+                callbacks: {
+                    label: function(context) { return ' ' + context.dataset.label + ': ' + context.parsed.y + '%'; }
+                }
+            }
+        }
+    }
+});
+
+const donutOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    cutout: '70%',
+    plugins: {
+        legend: { position: 'bottom', labels: { padding: 15, usePointStyle: true } },
+        tooltip: Object.assign({}, customTooltipConfig, {
+            backgroundColor: 'rgba(15, 23, 42, 0.95)',
+            bodyFont: { size: 15, weight: 'bold' },
+            padding: 12,
+            callbacks: {
+                title: customTooltipConfig.callbacks.title,
+                label: function(context) { return ' Alocação: ' + context.parsed + '%'; }
+            }
+        })
+    }
+};
+
+const donut20Ctx = document.getElementById('donut20Chart').getContext('2d');
+new Chart(donut20Ctx, {
+    type: 'doughnut',
+    data: {
+        labels: processedLabels,
+        datasets: [{
+            data: [35, 30, 20, 15],
+            backgroundColor: [palette.fixed, palette.national, palette.global, palette.realEstate],
+            borderWidth: 2,
+            borderColor: '#fff',
+            hoverOffset: 8
+        }]
+    },
+    options: donutOptions
+});
+
+const donut60Ctx = document.getElementById('donut60Chart').getContext('2d');
+new Chart(donut60Ctx, {
+    type: 'doughnut',
+    data: {
+        labels: processedLabels,
+        datasets: [{
+            data: [75, 5, 5, 15],
+            backgroundColor: [palette.fixed, palette.national, palette.global, palette.realEstate],
+            borderWidth: 2,
+            borderColor: '#fff',
+            hoverOffset: 8
+        }]
+    },
+    options: donutOptions
+});
+</script>
+</body>
+</html>
